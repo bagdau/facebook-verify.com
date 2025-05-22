@@ -1,0 +1,210 @@
+      body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 32px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .meta-logo {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #222;
+            font-size: 2.2em;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 18px;
+            color: #333;
+            font-size: 1.1em;
+            font-weight: normal;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="date"], input[type="password"], input[type="login"] {
+            width: 90%;
+            padding: 8px 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+		
+		#loadingProgressG {
+    width: 224px;
+    height: 17px;
+    overflow: hidden;
+    background-color: rgba(0, 128, 240, 0.91);
+    margin: 20px auto;
+    border-radius: 9px;
+    display: none; /* Скрыто по умолчанию */
+}
+
+.loadingProgressG {
+    background-color: rgb(214, 210, 214);
+    margin-top: 0;
+    margin-left: -224px;
+    animation: bounce_loadingProgressG 1.5s linear infinite;
+    width: 224px;
+    height: 17px;
+}
+
+@keyframes bounce_loadingProgressG {
+    0%   { margin-left: -224px; }
+    100% { margin-left: 224px; }
+}
+		
+.captcha-box {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#captcha-canvas {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+}
+
+.captcha-box button {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #888;
+  margin-bottom: 10px;
+}
+		
+		.fake-recaptcha {
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  padding: 10px;
+  width: 304px;
+  background: white;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 15px auto;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#robot-check {
+  width: 18px;
+  height: 18px;
+}
+
+.recaptcha-logo {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+}
+
+.recaptcha-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-top: 5px;
+  color: #666;
+}
+
+.recaptcha-footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+
+
+        @media (max-width: 500px) {
+            .container {
+                max-width: 98vw;
+                margin: 20px 1vw;
+                padding: 18px 6px;
+            }
+            input[type="text"], input[type="email"], input[type="date"], input[type="password"], input[type="login"] {
+                width: 98%;
+                font-size: 16px;
+            }
+            .meta-logo {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1em;
+            }
+            button {
+                font-size: 17px;
+            }
+        }
+        /* Spinner styles */
+        .spinner-overlay {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.8);
+            align-items: center;
+            justify-content: center;
+        }
+        .spinner {
+            width: 65px;
+            height: 65px;
+            animation: rotator 1.4s linear infinite;
+        }
+        @keyframes rotator {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(270deg); }
+        }
+        .path {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            transform-origin: center;
+            animation:
+                dash 1.4s ease-in-out infinite,
+                colors 5.6s ease-in-out infinite;
+        }
+        @keyframes colors {
+            0% { stroke: #4285F4; }
+            25% { stroke: #DE3E35; }
+            50% { stroke: #F7C223; }
+            75% { stroke: #1B9A59; }
+            100% { stroke: #4285F4; }
+        }
+        @keyframes dash {
+            0% { stroke-dashoffset: 187; }
+            50% {
+                stroke-dashoffset: 46.75;
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                transform: rotate(450deg);
+            }
+        }
